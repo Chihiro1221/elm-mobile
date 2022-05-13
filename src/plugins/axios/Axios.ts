@@ -8,8 +8,11 @@ export default class {
     this.setupInterceptors()
   }
 
-  public request<T>(config: AxiosRequestConfig) {
-    return this.instance.request<T>(config)
+  public request<T>(config: AxiosRequestConfig): Promise<T> {
+    return new Promise(async (resolve, reject) => {
+      const res = await this.instance.request<T>(config)
+      resolve(res.data)
+    })
   }
 
   private setupInterceptors() {
@@ -27,7 +30,7 @@ export default class {
 
   private responseInterceptors() {
     this.instance.interceptors.response.use(response => {
-      return response.data
+      return response
     }, err => {
       return Promise.reject(err)
     })

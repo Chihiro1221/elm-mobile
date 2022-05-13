@@ -14,5 +14,13 @@ export default defineConfig({
     alias: {
       '@': join(__dirname, 'src')
     }
+  },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: '@import "@/styles/_variables.scss";'
+      }
+    }
   }
+
 })

@@ -6,5 +6,14 @@ module.exports = {
   theme: {
     extend: {}
   },
-  plugins: []
+  plugins: [
+    function({ addBase }) {
+      addBase({
+        '.van-button': {
+          'background-color': 'var(--van-button-primary-background-color)'
+        }
+      })
+    }
+  ]
+
 }
