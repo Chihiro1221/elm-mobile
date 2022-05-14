@@ -35,15 +35,12 @@ const submitSearch = async () => {
   }
 }
 const selectCity = (city: IAddress) => {
-  if (location.history) {
-    location.history.push(city)
-    store.set(LocationEnum.LOCATION_HISTORY_KEY, location.history)
-  } else {
-    location.history = [city]
-    store.set(LocationEnum.LOCATION_HISTORY_KEY, location.history)
+  const history = location.history
+  const isHas = history.some(item => item.name === city.name)
+  if (!isHas) {
+    history?.push(city)
+    location.initHistroy(history!)
   }
-  // 存储到localStore,存储状态到pinia
-  store.set(LocationEnum.LOCATION_KEY, city)
   location.initLocation(city)
   router.push('/')
 }
@@ -51,7 +48,7 @@ const selectCity = (city: IAddress) => {
 const clearHistory = () => {
   isClear.value = false
   store.remove(LocationEnum.LOCATION_HISTORY_KEY)
-  location.history = []
+  location.initHistroy([])
   cities.value = []
 }
 </script>

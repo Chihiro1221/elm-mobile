@@ -71,12 +71,23 @@ interface Support {
 }
 
 const { location } = locationStore()
+
 export const getMerchants = () => {
   return http.request<IMerchant[]>({
     url: 'shopping/restaurants',
     params: {
       latitude: location?.latitude,
       longitude: location?.longitude,
+    },
+  })
+}
+
+export const searchMerchant = (keyword: string) => {
+  return http.request<IMerchant[]>({
+    url: 'v4/restaurants',
+    params: {
+      keyword,
+      geohash: location?.geohash,
     },
   })
 }

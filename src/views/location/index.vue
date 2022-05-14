@@ -1,15 +1,25 @@
 <script setup lang="ts">
 import CitySelector from '@/views/location/components/city-selector.vue'
 import { ICity, getCurrentCity, getHotCities, getCities } from '@/apis/cityApi'
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 import router from '@/router'
 
 const currentCity = ref<ICity>()
 const hotCities = ref<ICity[]>([])
-const cities = ref<{ [key: string]: ICity[] }>()
+const cities = ref<Record<string, ICity[]>>()
 currentCity.value = await getCurrentCity()
 hotCities.value = await getHotCities()
 cities.value = await getCities()
+
+const sortCities = computed(() => {
+  const obj = {} as Record<string, ICity[]>
+  Object.keys(cities.value!)
+    .sort()
+    .forEach(key => {
+      obj[key] = cities.value?.[key]!
+    })
+  return obj
+})
 
 const gotoCitySelector = (city: ICity) => {
   router.push(`/city/${city.id}`)
@@ -35,11 +45,11 @@ const gotoCitySelector = (city: ICity) => {
         <van-icon name="arrow" class="flex items-center" />
       </template>
     </van-cell>
-    <div v-if="hotCities.length && cities">
+    <div v-if="hotCities.length && sortCities">
       <CitySelector title="热门城市" :cities="hotCities" hot @change="gotoCitySelector" />
       <div class="cities">
         <CitySelector
-          v-for="(city, key) of cities"
+          v-for="(city, key) of sortCities"
           :title="(key as unknown as string)"
           :cities="city"
           @change="gotoCitySelector"
