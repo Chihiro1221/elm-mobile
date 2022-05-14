@@ -70,15 +70,94 @@ interface Support {
   _id: string
 }
 
+export interface Category {
+  name: string
+  description: string
+  id: number
+  restaurant_id: number
+  foods: Food[]
+  type: number
+  icon_url: string
+  is_selected: boolean
+  __v: number
+}
+
+export interface Food {
+  name: string
+  image_path: string
+  activity: Activity
+  restaurant_id: number
+  category_id: number
+  item_id: number
+  tips: string
+  _id: string
+  specfoods: Specfood[]
+  satisfy_rate: number
+  satisfy_count: number
+  attributes: Attribute[]
+  is_essential: boolean
+  server_utc: string
+  specifications: any[]
+  rating_count: number
+  month_sales: number
+  description: string
+  attrs: any[]
+  display_times: any[]
+  pinyin_name: string
+  is_featured: number
+  rating: number
+}
+
+interface Attribute {
+  icon_color: string
+  icon_name: string
+}
+
+interface Specfood {
+  name: string
+  item_id: number
+  sku_id: number
+  food_id: number
+  restaurant_id: number
+  _id: string
+  specs: any[]
+  stock: number
+  checkout_mode: number
+  is_essential: boolean
+  recent_popularity: number
+  sold_out: boolean
+  price: number
+  promotion_stock: number
+  recent_rating: number
+  packing_fee: number
+  pinyin_name: string
+  original_price: number
+}
+
+interface Activity {
+  image_text_color: string
+  icon_color: string
+  image_text: string
+}
+export interface MerchantQuery {
+  latitude: number
+  longitude: number
+  offset?: number
+  limit?: number
+  restaurant_category_id?: string
+  order_by?: 1 | 2 | 3 | 4 | 5 | 6
+  delivery_mode?: number[]
+  support_ids?: number[]
+  restaurant_category_ids?: number[]
+}
 const { location } = locationStore()
 
-export const getMerchants = () => {
+export const getMerchants = (query: Partial<MerchantQuery> = {}) => {
+  query.latitude = location?.latitude
+  query.longitude = location?.longitude
   return http.request<IMerchant[]>({
     url: 'shopping/restaurants',
-    params: {
-      latitude: location?.latitude,
-      longitude: location?.longitude,
-    },
+    params: query,
   })
 }
 
@@ -89,5 +168,17 @@ export const searchMerchant = (keyword: string) => {
       keyword,
       geohash: location?.geohash,
     },
+  })
+}
+
+export const getMerchant = (id: string) => {
+  return http.request<IMerchant>({
+    url: `shopping/restaurant/${id}`,
+  })
+}
+
+export const getGoodList = (id: string) => {
+  return http.request<Category[]>({
+    url: `shopping/v2/menu?restaurant_id=${id}`,
   })
 }

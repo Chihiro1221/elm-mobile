@@ -38,6 +38,8 @@ const router = createRouter({
     },
     { path: '/location', name: 'location', component: () => import('@/views/location/index.vue') },
     { path: '/city/:id', name: 'city', props: true, component: () => import('@/views/location/city.vue') },
+    { path: '/category', name: 'category', component: () => import('@/views/category/index.vue') },
+    { path: '/merchant/:id', name: 'merchant', props: true, component: () => import('@/views/merchant/index.vue') },
   ],
 })
 

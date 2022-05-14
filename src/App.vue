@@ -8,7 +8,7 @@
         class="animate__animated"
         enter-active-class="animate__fadeIn"
         leave-active-class="animate__fadeOut"
-        :duration="{ enter: 300, leave: 300 }"
+        :duration="{ enter: 150, leave: 150 }"
         mode="out-in"
       >
         <component :is="Component" />

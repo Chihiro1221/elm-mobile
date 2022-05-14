@@ -8,13 +8,17 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@better-scroll/core": "^2.4.2",
     "axios": "^0.27.2",
+    "better-scroll": "^2.4.2",
     "pinia": "^2.0.14",
+    "rm": "^0.1.8",
     "vant": "^3.4.9",
     "vue": "^3.2.33",
     "vue-router": "^4.0.13"
   },
   "devDependencies": {
+    "@types/better-scroll": "^1.12.4",
     "@types/node": "^17.0.33",
     "@vitejs/plugin-vue": "^2.3.3",
     "autoprefixer": "^10.4.7",

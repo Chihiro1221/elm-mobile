@@ -105,7 +105,7 @@ const selectHistory = (history: string) => {
       <div class="history">
         <div class="history-item" v-for="(item, i) of useSearch.history" :key="i" @click="selectHistory(item)">
           <div>{{ item }}</div>
-          <van-icon name="close" @click="deleteHistory(i)" />
+          <van-icon name="close" @click.stop="deleteHistory(i)" />
         </div>
       </div>
       <div class="clear-all" @click="clearHistory">清空搜索历史</div>
