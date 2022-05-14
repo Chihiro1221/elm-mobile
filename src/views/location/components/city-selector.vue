@@ -1,9 +1,9 @@
-<script setup lang='ts'>
+<script setup lang="ts">
 import { ICity } from '@/apis/cityApi'
 
 const props = defineProps<{
-  title: string,
-  cities: Array<ICity>,
+  title: string
+  cities: ICity[]
   hot?: boolean
 }>()
 
@@ -14,20 +14,25 @@ const gotoCitySelector = (city: ICity) => {
 </script>
 
 <template>
-  <div class='hot-city-container'>
-    <div class='city'>
-      <div class='title'>{{ title }}</div>
-      <div class='city-container'>
-        <div class='name' @click='gotoCitySelector(city)' :class='{"hot":hot}' v-for='city of props.cities'
-             :key='city.id'>{{ city.name
-          }}
+  <div class="hot-city-container">
+    <div class="city">
+      <div class="title">{{ title }}</div>
+      <div class="city-container">
+        <div
+          class="name"
+          @click="gotoCitySelector(city)"
+          :class="{ hot: hot }"
+          v-for="city of props.cities"
+          :key="city.id"
+        >
+          {{ city.name }}
         </div>
       </div>
     </div>
   </div>
 </template>
 
-<style scoped lang='scss'>
+<style scoped lang="scss">
 .hot-city-container {
   @apply border-t-2 pt-2;
   .city {
@@ -47,7 +52,6 @@ const gotoCitySelector = (city: ICity) => {
         }
       }
     }
-
   }
 }
 </style>

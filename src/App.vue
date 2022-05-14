@@ -9,6 +9,7 @@
         enter-active-class="animate__fadeIn"
         leave-active-class="animate__fadeOut"
         :duration="{ enter: 300, leave: 300 }"
+        mode="out-in"
       >
         <component :is="Component" />
       </transition>

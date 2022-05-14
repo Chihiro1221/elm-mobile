@@ -12,6 +12,9 @@ export interface ICity {
   sort: number
 }
 
+export interface ICityList {
+  [key: string]: ICity[]
+}
 export interface IAddress {
   address: string
   geohash: string
@@ -22,43 +25,43 @@ export interface IAddress {
 
 export const getCurrentCity = () => {
   return http.request<ICity>({
-    url: 'cities',
+    url: 'v1/cities',
     params: {
-      type: 'guess'
-    }
+      type: 'guess',
+    },
   })
 }
 
 export const getHotCities = () => {
   return http.request<ICity[]>({
-    url: 'cities',
+    url: 'v1/cities',
     params: {
-      type: 'hot'
-    }
+      type: 'hot',
+    },
   })
 }
 
 export const getCities = () => {
-  return http.request<ICity[]>({
-    url: 'cities',
+  return http.request<ICityList>({
+    url: 'v1/cities',
     params: {
-      type: 'group'
-    }
+      type: 'group',
+    },
   })
 }
 
 export const getCityById = (id: string) => {
   return http.request<ICity>({
-    url: `cities/${id}`
+    url: `v1/cities/${id}`,
   })
 }
 
 export const searchCities = (id: number, keyword: string) => {
   return http.request<IAddress[]>({
-    url: 'pois',
+    url: 'v1/pois',
     params: {
       city_id: id,
-      keyword
-    }
+      keyword,
+    },
   })
 }

@@ -1,12 +1,17 @@
 @import './_variables.scss';
-
+* {
+  font-family: Microsoft Yahei, sans-serif;
+}
 :root {
   --van-nav-bar-background-color: #4d8ee1;
   --van-nav-bar-text-color: white;
   --van-nav-bar-title-text-color: white;
   --van-cell-background-color: white;
   --van-nav-bar-icon-color: white;
-  --van-button-primary-background-color: #1989fa
+  --van-button-primary-background-color: #1989fa;
+  --van-swipe-indicator-inactive-background-color: #777;
+  --van-swipe-indicator-size: 8px;
+  --van-swipe-indicator-margin: var(--van-padding-xs);
 }
 
 .cell-title {
@@ -18,5 +23,5 @@
 }
 
 .van-field {
-  @apply border
+  @apply border;
 }
