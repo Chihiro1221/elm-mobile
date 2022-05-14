@@ -1,19 +1,19 @@
 <script setup lang="ts">
 import { Category } from '@/apis/merchantApi'
-import { computed, onMounted, ref } from 'vue'
-import BetterScroll from '@better-scroll/core'
+import { computed, onMounted, onUnmounted, ref } from 'vue'
+import BetterScroll, { BScrollInstance } from '@better-scroll/core'
 
-const prosp = defineProps<{
+const props = defineProps<{
   navs: Category[]
-  list: Category[]
+  source: Category[]
 }>()
 const scrollTop = ref(0)
 const menuRef = ref()
 const contentRef = ref()
 const list = ref<HTMLDivElement[]>([])
 const heightList = ref<number[]>([])
-const menuInstance = ref<any>()
-const contentInstance = ref<any>()
+const menuInstance = ref<BScrollInstance>()
+const contentInstance = ref<BScrollInstance>()
 function calculateHeight() {
   let height = 0
   list.value.forEach(el => {
@@ -39,8 +39,12 @@ onMounted(() => {
     })
   }, 100)
 })
+onUnmounted(() => {
+  menuInstance.value?.destory()
+  contentInstance.value?.destory()
+})
 const handleClick = (i: number) => {
-  contentInstance.value.scrollToElement(list.value[i], 250, 0, 5)
+  contentInstance.value?.scrollToElement(list.value[i], 250, 0, 5)
 }
 
 const currentIndex = computed(() => {
@@ -69,12 +73,33 @@ const currentIndex = computed(() => {
     </nav>
     <div class="content" ref="contentRef">
       <div class="box">
-        <div class="item" v-for="cate of list" :key="cate.id" :ref="item => list.push(item as HTMLDivElement)">
-          <slot :item="cate" />
+        <div v-for="cate of source" :key="cate.id" :ref="item => list.push(item as HTMLDivElement)">
+          <slot :cate="cate"></slot>
         </div>
       </div>
     </div>
   </div>
 </template>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+.container {
+  .nav {
+    @apply w-[90px] fixed left-0;
+    height: calc(100vh - 44px);
+    .item {
+      @apply px-4 py-6 bg-[#f5f5f5] text-sm text-gray-500 truncate;
+      &.active {
+        @apply bg-white relative font-bold;
+        &::before {
+          content: '';
+          @apply h-full w-[4px] bg-[#4d8ee1] block absolute top-0 left-0;
+        }
+      }
+    }
+  }
+  > .content {
+    @apply ml-[90px] overflow-auto;
+    height: calc(100vh - 44px);
+  }
+}
+</style>
