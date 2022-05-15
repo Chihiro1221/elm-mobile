@@ -29,7 +29,7 @@ goodList.value = await getGoodList(props.id)
               </div>
               <div class="content" id="content">
                 <div class="good" v-for="food of cate.foods" :key="food._id">
-                  <img :src="'http://elm.cangdu.org/img/' + food.image_path" alt="" />
+                  <img v-lazy="'http://elm.cangdu.org/img/' + food.image_path" alt="" />
                   <div class="desc">
                     <div class="name">
                       {{ food.name }}

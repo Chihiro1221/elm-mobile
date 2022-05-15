@@ -7,7 +7,7 @@ const props = defineProps<{
 
 <template>
   <div class="merchant">
-    <img :src="'http://elm.cangdu.org/img/' + merchant.image_path" alt="" />
+    <img v-lazy="'http://elm.cangdu.org/img/' + merchant.image_path" alt="" />
     <div class="desc">
       <div class="title justify-between">
         <div class="flex merchants-center w-[200px] items-center">
