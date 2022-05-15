@@ -1,3 +1,4 @@
+import { App } from 'vue'
 import { createRouter, createWebHistory } from 'vue-router'
 import Guard from './guard'
 
@@ -43,5 +44,8 @@ const router = createRouter({
   ],
 })
 
-new Guard(router)
+export function setupRouter(app: App) {
+  new Guard(router)
+  app.use(router)
+}
 export default router

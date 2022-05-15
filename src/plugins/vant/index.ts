@@ -1,19 +1,19 @@
 import { App } from 'vue'
 import {
   Button,
-  Cell,
+  Cell, Divider,
   Empty,
   Field,
   Icon,
   Loading,
-  NavBar,
+  NavBar, Overlay,
   Rate,
   Swipe,
   SwipeItem,
   Tab,
   Tabbar,
   TabbarItem,
-  Tabs,
+  Tabs
 } from 'vant'
 
 const components = [
@@ -31,6 +31,8 @@ const components = [
   TabbarItem,
   Tab,
   Tabs,
+  Overlay,
+  Divider
 ]
 export default function setupVant(app: App) {
   components.forEach(component => app.use(component))

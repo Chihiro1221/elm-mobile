@@ -31,7 +31,12 @@ watch(
       </template>
     </van-nav-bar>
     <div class="content">
-      <MerchantItem v-for="item of merchants" :key="item.id" :merchant="item" />
+      <MerchantItem
+        v-for="item of merchants"
+        :key="item.id"
+        :merchant="item"
+        @click="$router.push(`/merchant/${item.id}`)"
+      />
     </div>
   </div>
 </template>

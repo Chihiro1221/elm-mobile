@@ -85,7 +85,7 @@ const currentIndex = computed(() => {
 .container {
   .nav {
     @apply w-[90px] fixed left-0;
-    height: calc(100vh - 44px);
+    height: calc(100vh - 44px - 138px);
     .item {
       @apply px-4 py-6 bg-[#f5f5f5] text-sm text-gray-500 truncate;
       &.active {
@@ -99,7 +99,7 @@ const currentIndex = computed(() => {
   }
   > .content {
     @apply ml-[90px] overflow-auto;
-    height: calc(100vh - 44px);
+    height: calc(100vh - 44px - 138px);
   }
 }
 </style>

@@ -8,7 +8,7 @@ export default class {
     this.setupInterceptors()
   }
 
-  public request<T>(config: AxiosRequestConfig): Promise<T> {
+  public request<T = any>(config: AxiosRequestConfig): Promise<T> {
     return new Promise(async (resolve, reject) => {
       const res = await this.instance.request<T>(config)
       resolve(res.data)

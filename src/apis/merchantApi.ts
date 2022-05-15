@@ -1,5 +1,27 @@
 import locationStore from '@/store/loaction'
 import http from '@/plugins/axios'
+
+export interface Comment {
+  rated_at: string
+  rating_star: number
+  rating_text: string
+  time_spent_desc: string
+  _id: string
+  username: string
+  tags: any[]
+  item_ratings: Itemrating[]
+  highlights: any[]
+  avatar: string
+}
+
+interface Itemrating {
+  food_id: number
+  food_name: string
+  _id: string
+  is_valid: number
+  image_hash: string
+}
+
 export interface IMerchant {
   name: string
   address: string
@@ -139,6 +161,7 @@ interface Activity {
   icon_color: string
   image_text: string
 }
+
 export interface MerchantQuery {
   latitude: number
   longitude: number
@@ -150,35 +173,58 @@ export interface MerchantQuery {
   support_ids?: number[]
   restaurant_category_ids?: number[]
 }
+
 const { location } = locationStore()
 
+/**
+ * 获取餐厅列表
+ * @param query
+ */
 export const getMerchants = (query: Partial<MerchantQuery> = {}) => {
   query.latitude = location?.latitude
   query.longitude = location?.longitude
   return http.request<IMerchant[]>({
     url: 'shopping/restaurants',
-    params: query,
+    params: query
   })
 }
 
+/**
+ * 搜索餐厅
+ * @param keyword
+ */
 export const searchMerchant = (keyword: string) => {
   return http.request<IMerchant[]>({
     url: 'v4/restaurants',
     params: {
       keyword,
-      geohash: location?.geohash,
-    },
+      geohash: location?.geohash
+    }
   })
 }
 
+/**
+ * 获取餐厅详情
+ * @param id
+ */
 export const getMerchant = (id: string) => {
   return http.request<IMerchant>({
-    url: `shopping/restaurant/${id}`,
+    url: `shopping/restaurant/${id}`
   })
 }
 
+/**
+ * 获取商品列表
+ * @param id
+ */
 export const getGoodList = (id: string) => {
   return http.request<Category[]>({
-    url: `shopping/v2/menu?restaurant_id=${id}`,
+    url: `shopping/v2/menu?restaurant_id=${id}`
+  })
+}
+
+export const getComments = (id: string) => {
+  return http.request<Comment[]>({
+    url: `ugc/v2/restaurants/${id}/ratings`
   })
 }
