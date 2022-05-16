@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup lang='ts'>
 import { Category } from '@/apis/merchantApi'
 import { computed, onMounted, onUnmounted, ref } from 'vue'
 import BetterScroll, { BScrollInstance } from '@better-scroll/core'
@@ -14,6 +14,7 @@ const list = ref<HTMLDivElement[]>([])
 const heightList = ref<number[]>([])
 const menuInstance = ref<BScrollInstance>()
 const contentInstance = ref<BScrollInstance>()
+
 function calculateHeight() {
   let height = 0
   list.value.forEach(el => {
@@ -26,11 +27,12 @@ onMounted(() => {
   setTimeout(() => {
     menuInstance.value = new BetterScroll(menuRef.value, {
       click: true,
-      observeDOM: true,
+      observeDOM: true
     })
     calculateHeight()
     contentInstance.value = new BetterScroll(contentRef.value, {
       probeType: 3,
+      click: true
     })
 
     //触发滑动实时监听
@@ -40,8 +42,8 @@ onMounted(() => {
   }, 100)
 })
 onUnmounted(() => {
-  menuInstance.value?.destory()
-  contentInstance.value?.destory()
+  menuInstance.value?.destroy()
+  contentInstance.value?.destroy()
 })
 const handleClick = (i: number) => {
   contentInstance.value?.scrollToElement(list.value[i], 250, 0, 5)
@@ -57,35 +59,36 @@ const currentIndex = computed(() => {
 </script>
 
 <template>
-  <div class="container">
-    <nav ref="menuRef" class="nav" id="nav">
+  <div class='container'>
+    <nav ref='menuRef' class='nav' id='nav'>
       <div>
         <div
-          :class="{ active: i === currentIndex }"
-          class="item"
-          v-for="(item, i) of navs"
-          :key="item.id"
-          @click="handleClick(i)"
+          :class='{ active: i === currentIndex }'
+          class='item'
+          v-for='(item, i) of navs'
+          :key='item.id'
+          @click='handleClick(i)'
         >
           {{ item.name }}
         </div>
       </div>
     </nav>
-    <div class="content" ref="contentRef">
-      <div class="box">
-        <div v-for="cate of source" :key="cate.id" :ref="item => list.push(item as HTMLDivElement)">
-          <slot :cate="cate"></slot>
+    <div class='content' ref='contentRef'>
+      <div class='box'>
+        <div v-for='cate of source' :key='cate.id' :ref='item => list.push(item)'>
+          <slot :cate='cate'></slot>
         </div>
       </div>
     </div>
   </div>
 </template>
 
-<style scoped lang="scss">
+<style scoped lang='scss'>
 .container {
   .nav {
-    @apply w-[90px] fixed left-0;
-    height: calc(100vh - 44px - 138px);
+    @apply w-[90px] fixed left-0 bg-[#f5f5f5];
+    height: calc(100vh - 44px - 122px);
+
     .item {
       @apply px-4 py-6 bg-[#f5f5f5] text-sm text-gray-500 truncate;
       &.active {
@@ -97,9 +100,10 @@ const currentIndex = computed(() => {
       }
     }
   }
+
   > .content {
     @apply ml-[90px] overflow-auto;
-    height: calc(100vh - 44px - 138px);
+    height: calc(100vh - 44px - 122px);
   }
 }
 </style>

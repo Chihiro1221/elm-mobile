@@ -174,6 +174,22 @@ export interface MerchantQuery {
   restaurant_category_ids?: number[]
 }
 
+export interface MerchantRating {
+  compare_rating: number
+  deliver_time: number
+  food_score: number
+  order_rating_amount: number
+  overall_score: number
+  service_score: number
+}
+
+export interface MerchantCommentCate {
+  name: string
+  _id: string
+  unsatisfied: boolean
+  count: number
+}
+
 const { location } = locationStore()
 
 /**
@@ -190,7 +206,7 @@ export const getMerchants = (query: Partial<MerchantQuery> = {}) => {
 }
 
 /**
- * 搜索餐厅
+ * 搜索餐厅 关键字
  * @param keyword
  */
 export const searchMerchant = (keyword: string) => {
@@ -205,7 +221,7 @@ export const searchMerchant = (keyword: string) => {
 
 /**
  * 获取餐厅详情
- * @param id
+ * @param id 餐厅id
  */
 export const getMerchant = (id: string) => {
   return http.request<IMerchant>({
@@ -215,7 +231,7 @@ export const getMerchant = (id: string) => {
 
 /**
  * 获取商品列表
- * @param id
+ * @param id 餐厅id
  */
 export const getGoodList = (id: string) => {
   return http.request<Category[]>({
@@ -223,8 +239,32 @@ export const getGoodList = (id: string) => {
   })
 }
 
+/**
+ * 获取店铺评价
+ * @param id {string} 餐厅id
+ */
 export const getComments = (id: string) => {
   return http.request<Comment[]>({
     url: `ugc/v2/restaurants/${id}/ratings`
+  })
+}
+
+/**
+ * 获取店铺评分
+ * @param id {string} 餐厅id
+ */
+export const getMerchantRating = (id: string) => {
+  return http.request<MerchantRating>({
+    url: `ugc/v2/restaurants/${id}/ratings/scores`
+  })
+}
+
+/**
+ * 获取店铺评价分类
+ * @param id
+ */
+export const getMerchantCommentCate = (id: string) => {
+  return http.request<MerchantCommentCate[]>({
+    url: `ugc/v2/restaurants/${id}/ratings/tags`
   })
 }

@@ -1,17 +1,17 @@
-<script setup lang="ts"></script>
+<script setup lang='ts'></script>
 
 <template>
   <suspense>
-    <router-view v-slot="{ Component }">
+    <router-view v-slot='{ Component,route }'>
       <transition
         appear
-        class="animate__animated"
-        enter-active-class="animate__fadeIn"
-        leave-active-class="animate__fadeOut"
-        :duration="{ enter: 150, leave: 150 }"
-        mode="out-in"
+        class='animate__animated'
+        :enter-active-class='route.meta.animation?.enter ?? "animate__fadeIn"'
+        :leave-active-class='route.meta.animation?.leave ?? "animate__fadeOut"'
+        duration='150'
+        mode='out-in'
       >
-        <component :is="Component" />
+        <component :is='Component' />
       </transition>
     </router-view>
   </suspense>
