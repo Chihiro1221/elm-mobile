@@ -1,7 +1,9 @@
 @import './_variables.scss';
+
 * {
   font-family: Microsoft Yahei, sans-serif;
 }
+
 :root {
   --van-nav-bar-background-color: #4d8ee1;
   --van-nav-bar-text-color: white;
@@ -17,6 +19,7 @@
 .van-tabs__nav {
   z-index: 99999;
 }
+
 .cell-title {
   flex: 1;
 }
@@ -27,4 +30,8 @@
 
 .van-field {
   @apply border;
+}
+
+.toast {
+  @apply w-screen h-screen flex justify-center items-center bg-red-500 fixed top-0 left-0;
 }

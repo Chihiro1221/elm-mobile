@@ -63,7 +63,7 @@ const selectHistory = (history: string) => {
     <div class="result" v-if="merchants.length">
       <div class="title">商家</div>
       <div class="content">
-        <div class="item" v-for="item of merchants" :key="item.id">
+        <div class="item" v-for="item of merchants" :key="item.id" @click="$router.push(`/merchant/${item.id}`)">
           <img :src="'https://elm.cangdu.org/img/' + item.image_path" alt="" />
           <div class="desc">
             <div class="name">

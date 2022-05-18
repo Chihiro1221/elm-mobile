@@ -1,6 +1,7 @@
 import { App } from 'vue'
 import { createRouter, createWebHistory } from 'vue-router'
 import Guard from './guard'
+import authStore from '@/store/auth'
 
 const router = createRouter({
   history: createWebHistory(),
@@ -41,13 +42,48 @@ const router = createRouter({
     { path: '/city/:id', name: 'city', props: true, component: () => import('@/views/location/city.vue') },
     { path: '/category', name: 'category', component: () => import('@/views/category/index.vue') },
     {
-      path: '/merchant/:id', name: 'merchant', props: true,
+      path: '/merchant/:id',
+      name: 'merchant',
+      props: true,
       component: () => import('@/views/merchant/index.vue')
+    },
+    {
+      path: '/login',
+      name: 'login',
+      meta: { guest: true },
+      component: () => import('@/views/auth/login.vue')
+    },
+    {
+      path: '/forget-password',
+      name: 'forget.password',
+      component: () => import('@/views/auth/forget-password.vue')
+    },
+    {
+      path: '/member',
+      name: 'member',
+      component: () => import('@/views/auth/member.vue')
+    },
+    {
+      path: '/service',
+      name: 'service',
+      component: () => import('@/views/auth/service.vue')
+    },
+    {
+      path: '/download',
+      name: 'download',
+      component: () => import('@/views/auth/download.vue')
+    },
+    {
+      path: '/profile/info',
+      name: 'profile.info',
+      meta: { animation: { enter: 'animate__fadeInRight', leave: 'animate__fadeOutRight' } },
+      component: () => import('@/views/auth/info.vue')
     }
   ]
 })
 
-export function setupRouter(app: App) {
+export async function setupRouter(app: App) {
+  void await authStore().initUserProfile()
   new Guard(router)
   app.use(router)
 }

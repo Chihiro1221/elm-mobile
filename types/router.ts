@@ -12,6 +12,8 @@ declare module 'vue-router' {
       leave: string
       enterDuration: number
       leaveDuration: number
-    }>
+    }>,
+    guest?: boolean
+    auth?: boolean
   }
 }
