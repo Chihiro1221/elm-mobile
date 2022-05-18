@@ -35,3 +35,14 @@
 .toast {
   @apply w-screen h-screen flex justify-center items-center bg-red-500 fixed top-0 left-0;
 }
+
+.avatar {
+  @apply w-[60px] h-[60px] rounded-full;
+}
+
+.van-dialog {
+}
+
+.van-uploader__input-wrapper {
+  flex: 1 !important;
+}

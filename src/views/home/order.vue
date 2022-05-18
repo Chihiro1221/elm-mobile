@@ -1,5 +1,9 @@
-<script setup lang="ts"></script>
+<script setup lang='ts'></script>
 
-<template>order...</template>
+<template>
+  <div class='order-container'>
+    order...
+  </div>
+</template>
 
-<style scoped lang="scss"></style>
+<style scoped lang='scss'></style>

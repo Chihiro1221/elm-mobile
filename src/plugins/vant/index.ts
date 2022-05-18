@@ -19,7 +19,7 @@ import {
   TabbarItem,
   Tabs,
   Form,
-  CellGroup, Toast
+  CellGroup, Toast, Uploader, SwipeCell
 } from 'vant'
 
 const components = [
@@ -41,7 +41,9 @@ const components = [
   Divider,
   Checkbox,
   Form,
-  CellGroup
+  CellGroup,
+  Uploader,
+  SwipeCell
 ]
 export default function setupVant(app: App) {
   components.forEach(component => app.use(component))

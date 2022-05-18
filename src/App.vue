@@ -9,7 +9,6 @@
         class='animate__animated'
         :enter-active-class="route.meta.animation?.enter ?? 'animate__fadeIn'"
         :leave-active-class="route.meta.animation?.leave ?? 'animate__fadeOut'"
-        :mode='$route.path === "/profile/info" ? "in-out" : "out-in"'
       >
         <component :is='Component' />
       </transition>
@@ -18,7 +17,7 @@
 </template>
 
 <style lang='scss' scoped>
-.animate__fadeInRight {
+.animate__fadeInRight, animate__fadeOutRight {
   animation-duration: 300ms;
 }
 

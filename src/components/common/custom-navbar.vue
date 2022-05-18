@@ -5,6 +5,9 @@ import { useRoute } from 'vue-router'
 import router from '@/router'
 import authStore from '@/store/auth'
 
+const props = defineProps<{
+  left?: string
+}>()
 const title = ref()
 const { location } = locationStore()
 const route = useRoute()
@@ -37,13 +40,14 @@ const titleClick = () => {
 </script>
 
 <template>
-  <van-nav-bar fixed @click-left='leftCilck'>
+  <van-nav-bar fixed>
     <template #title>
       <div @click='titleClick'>{{ title }}</div>
     </template>
     <template #left>
       <div>
-        <van-icon :name='leftText' size='20' />
+        <div v-if='left' class='text-white'>{{ left }}</div>
+        <van-icon @click='leftCilck' v-else :name='leftText' size='20' />
       </div>
     </template>
     <template #right>

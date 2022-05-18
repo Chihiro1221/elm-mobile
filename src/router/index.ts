@@ -61,24 +61,55 @@ const router = createRouter({
     {
       path: '/member',
       name: 'member',
-      component: () => import('@/views/auth/member.vue')
+      component: () => import('@/views/profile/member.vue')
     },
     {
       path: '/service',
       name: 'service',
-      component: () => import('@/views/auth/service.vue')
+      component: () => import('@/views/profile/service.vue')
     },
     {
       path: '/download',
       name: 'download',
-      component: () => import('@/views/auth/download.vue')
+      component: () => import('@/views/profile/download.vue')
     },
     {
       path: '/profile/info',
       name: 'profile.info',
-      meta: { animation: { enter: 'animate__fadeInRight', leave: 'animate__fadeOutRight' } },
-      component: () => import('@/views/auth/info.vue')
+      meta: {
+        animation: { enter: 'animate__fadeInRight', leave: 'animate__fadeOutRight' },
+        auth: true
+      },
+      component: () => import('@/views/profile/info.vue')
+    },
+    {
+      path: '/profile/info/change-username',
+      name: 'profile.info.change-username',
+      meta: {
+        animation: { enter: 'animate__fadeInRight', leave: 'animate__fadeOutRight' },
+        auth: true
+      },
+      component: () => import('@/views/profile/change-username.vue')
+    },
+    {
+      path: '/profile/info/address',
+      name: 'profile.info.address',
+      meta: {
+        animation: { enter: 'animate__fadeInRight', leave: 'animate__fadeOutRight' },
+        auth: true
+      },
+      component: () => import('@/views/profile/address/index.vue')
+    },
+    {
+      path: '/profile/info/address/add',
+      name: 'profile.info.address.add',
+      meta: {
+        animation: { enter: 'animate__fadeInRight', leave: 'animate__fadeOutRight' },
+        auth: true
+      },
+      component: () => import('@/views/profile/address/add.vue')
     }
+
   ]
 })
 

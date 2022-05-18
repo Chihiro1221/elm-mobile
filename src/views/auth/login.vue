@@ -7,7 +7,9 @@ import { AuthEnum } from '@/enum/AuthEnum'
 import Navbar from '@/components/common/navbar.vue'
 import authService from '@/composables/auth'
 import router from '@/router'
+import authStore from '@/store/auth'
 
+const auth = authStore()
 const form = reactive<ILogin>({
   username: 'heart',
   password: 'youzhi..',
@@ -25,6 +27,7 @@ const onSubmit = async () => {
     })
   }
   store.set(AuthEnum.USER_ID, (res as UserProfile).id)
+  await auth.initUserProfile()
   await router.push('/home')
 }
 

@@ -21,5 +21,8 @@ export default class Guard {
     if (authStore().profile && to.meta.guest) {
       return from
     }
+    if (!authStore().profile && to.meta.auth) {
+      return from
+    }
   }
 }

@@ -3,6 +3,7 @@ import CitySelector from '@/views/location/components/city-selector.vue'
 import { ICity, getCurrentCity, getHotCities, getCities } from '@/apis/cityApi'
 import { computed, ref } from 'vue'
 import router from '@/router'
+import Navbar from '@/components/common/custom-navbar.vue'
 
 const currentCity = ref<ICity>()
 const hotCities = ref<ICity[]>([])
@@ -28,7 +29,7 @@ const gotoCitySelector = (city: ICity) => {
 
 <template>
   <div class="location-container">
-    <van-nav-bar fixed left-text="饿了么" right-text="登录|注册" @click-left="$router.push('/')" />
+    <Navbar left='饿了么'/>
     <van-cell title-class="cell-title" value-class="cell-value" class="border-b">
       <template #title>
         <div class="text-xs flex-1 text-gray-500">当前定位城市：</div>
