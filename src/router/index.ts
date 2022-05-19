@@ -15,25 +15,25 @@ const router = createRouter({
         {
           path: 'home',
           name: 'home.index',
-          meta: { tabbar: { name: '首页', icon: 'wap-home-o' } },
+          meta: { tabbar: { name: '首页', icon: 'wap-home-o', index: 1 } },
           component: () => import('@/views/home/index.vue')
         },
         {
           path: 'search',
           name: 'home.search',
-          meta: { tabbar: { name: '搜索', icon: 'search' } },
+          meta: { tabbar: { name: '搜索', icon: 'search', index: 2 } },
           component: () => import('@/views/home/search.vue')
         },
         {
           path: 'order',
           name: 'home.order',
-          meta: { tabbar: { name: '订单', icon: 'orders-o' } },
+          meta: { tabbar: { name: '订单', icon: 'orders-o', index: 3 } },
           component: () => import('@/views/home/order.vue')
         },
         {
-          path: 'profile',
+          path: 'profile/:page1?/:page2?/:page3?',
           name: 'home.profile',
-          meta: { tabbar: { name: '我的', icon: 'user-o' } },
+          meta: { tabbar: { name: '我的', icon: 'user-o', index: 4 } },
           component: () => import('@/views/home/profile.vue')
         }
       ]
@@ -74,59 +74,19 @@ const router = createRouter({
       component: () => import('@/views/profile/download.vue')
     },
     {
-      path: '/profile/info',
-      name: 'profile.info',
-      meta: {
-        animation: { enter: 'animate_fade_left', leave: 'animate_fade_out_left' },
-        auth: true
-      },
-      component: () => import('@/views/profile/info.vue')
-    },
-    {
-      path: '/profile/info/change-username',
-      name: 'profile.info.change-username',
-      meta: {
-        animation: { enter: 'animate_fade_left', leave: 'animate_fade_out_left' },
-        auth: true
-      },
-      component: () => import('@/views/profile/change-username.vue')
-    },
-    {
-      path: '/profile/info/address',
-      name: 'profile.info.address',
-      meta: {
-        animation: { enter: 'animate_fade_left', leave: 'animate_fade_out_left' },
-        auth: true
-      },
-      component: () => import('@/views/profile/address/index.vue')
-    },
-    {
-      path: '/profile/info/address/add',
-      name: 'profile.info.address.add',
-      meta: {
-        animation: { enter: 'animate_fade_left', leave: 'animate_fade_out_left' },
-        auth: true
-      },
-      component: () => import('@/views/profile/address/add.vue')
-    },
-    {
-      path: '/profile/info/address/search',
-      name: 'profile.info.address.search',
-      meta: {
-        animation: { enter: 'animate_fade_left', leave: 'animate_fade_out_left' },
-        auth: true
-      },
-      component: () => import('@/views/profile/address/search.vue')
-    },
-    {
       path: '/profile/balance',
       name: 'profile.balance',
       component: () => import('@/views/profile/balance/index.vue')
     },
     {
-      path: '/profile/balance/detail:page?',
+      path: '/profile/balance/:page?',
       name: 'profile.balance.detail',
       component: () => import('@/views/profile/balance/index.vue')
+    },
+    {
+      path: '/profile/discount',
+      name: 'profile.discount',
+      component: () => import('@/views/profile/discount/index.vue')
     }
   ]
 })

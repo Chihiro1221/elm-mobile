@@ -8,7 +8,7 @@ const props = defineProps<{
 
 <template>
   <div class='item border-b py-4 flex items-start'>
-    <img class='avatar w-[30px] h-[30px] rounded-full mr-2'
+    <img class='w-[30px] h-[30px] rounded-full mr-2'
          src='http://static.galileo.xiaojukeji.com/static/tms/default_header.png'
          alt=''>
     <div class='desc text-xs flex-1'>

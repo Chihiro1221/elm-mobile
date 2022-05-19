@@ -81,3 +81,7 @@
 .van-hairline--bottom:after {
   border: none
 }
+
+.van-popup--center {
+  z-index: 2101 !important;
+}

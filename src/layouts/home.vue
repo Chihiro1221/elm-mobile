@@ -29,4 +29,9 @@ import Tabbar from './home/tabbar.vue'
   min-height: 100vh;
   background-color: #f5f5f5;
 }
+
+.van-nav-bar {
+  position: fixed;
+}
+
 </style>

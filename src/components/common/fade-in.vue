@@ -20,6 +20,6 @@ defineProps<{
 
 <style scoped lang='scss'>
 .fade-in-container {
-  @apply fixed top-0 left-0 right-0 bottom-0 z-[2004];
+  @apply fixed w-full top-0 left-0 bottom-0 right-0 min-h-screen z-[2004] overflow-auto;
 }
 </style>

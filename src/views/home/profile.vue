@@ -1,7 +1,12 @@
 <script setup lang='ts'>
 import authStore from '@/store/auth'
+import FadeIn from '@/components/common/fade-in.vue'
+import Info from '@/views/profile/info.vue'
+import profileHook from '@/hooks/profile'
 
 const auth = authStore()
+const { infoShow } = profileHook()
+
 const navigate = () => {
   location.href = 'https://activity-6.m.duiba.com.cn/'
 }
@@ -23,17 +28,16 @@ const navigate = () => {
       <van-icon color='white' name='arrow' />
     </div>
     <div class='meta'>
-      <div class='item ' @click='$router.push("/profile/balance")'>
+      <div class='item' @click='$router.push("/profile/balance")'>
         <div class='title'><span class='text-[#f19e38]'>{{ auth.profile?.balance ?? 0 }}</span>元</div>
         <div class='subtitle mt-2'>我的余额</div>
       </div>
-      <div
-        class='item '>
+      <div class='item' @click='$router.push("/profile/discount")'>
         <div class='title'><span class='text-[#ed6a4a]'>{{ auth.profile?.gift_amount ?? 0 }}</span>元
         </div>
         <div class='subtitle mt-2'>我的优惠</div>
       </div>
-      <div class='item '>
+      <div class='item'>
         <div class='title'><span class='text-[#80c03c]'>{{ auth.profile?.brand_member_new ?? 0 }}</span>元
         </div>
         <div class='subtitle mt-2'>我的积分</div>
@@ -80,6 +84,9 @@ const navigate = () => {
         </template>
       </van-cell>
     </div>
+    <fade-in :visible='infoShow'>
+      <Info />
+    </fade-in>
   </div>
 </template>
 

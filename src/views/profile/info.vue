@@ -4,8 +4,15 @@ import authStore from '@/store/auth'
 import { Dialog } from 'vant'
 import router from '@/router'
 import { uploadAvatar, UploadResult } from '@/apis/uploadApi'
+import ChangeUsername from '@/views/profile/change-username.vue'
+import { inject } from 'vue'
+import { ProvideKeyEnum } from '@/enum/ProvideKeyEnum'
+import { IInject } from '@/views/home/profile.vue'
+import FadeIn from '@/components/common/fade-in.vue'
+import Address from '@/views/profile/address/index.vue'
 
 const auth = authStore()
+const parent = inject<IInject>(ProvideKeyEnum.PROFILE_KEY)
 const logout = () => {
   Dialog.confirm({ title: '警告', message: '确定退出登录吗?' }).then(() => {
     auth.logout()
@@ -108,6 +115,12 @@ const leftClick = () => {
       <van-button type='danger' color='#c96050' size='small' class='rounded-sm' block @click='logout'>退出登录
       </van-button>
     </div>
+    <fade-in :visible='parent.changeUserNameShow.value'>
+      <ChangeUsername />
+    </fade-in>
+    <fade-in :visible='parent.addressShow.value'>
+      <Address />
+    </fade-in>
   </div>
 </template>
 

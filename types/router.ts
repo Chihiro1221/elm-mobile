@@ -6,6 +6,7 @@ declare module 'vue-router' {
     tabbar?: {
       name: string
       icon: string
+      index: number
     },
     animation?: Partial<{
       enter: string
