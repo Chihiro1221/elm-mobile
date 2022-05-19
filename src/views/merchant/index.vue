@@ -145,7 +145,7 @@ const handleShowFood = (food: Food) => {
       class="animate__animated"
       appear
       enter-active-class="animate_fade_left"
-      leave-active-class="animate__fadeOutRight"
+      leave-active-class="animate_fade_out_left"
       mode="in-out"
     >
       <div v-if="foodShow" class="food-cover">
@@ -171,6 +171,12 @@ const handleShowFood = (food: Food) => {
 </template>
 
 <style scoped lang="scss">
+.animate_fade_left{
+  animation-duration: 200ms;
+}
+.animate_fade_out_left{
+  animation-duration: 200ms;
+}
 .merchant-container {
   .item {
     .title {

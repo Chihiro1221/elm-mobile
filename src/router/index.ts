@@ -117,6 +117,16 @@ const router = createRouter({
         auth: true
       },
       component: () => import('@/views/profile/address/search.vue')
+    },
+    {
+      path: '/profile/balance',
+      name: 'profile.balance',
+      component: () => import('@/views/profile/balance/index.vue')
+    },
+    {
+      path: '/profile/balance/detail:page?',
+      name: 'profile.balance.detail',
+      component: () => import('@/views/profile/balance/index.vue')
     }
   ]
 })

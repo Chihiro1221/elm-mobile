@@ -23,8 +23,7 @@ const navigate = () => {
       <van-icon color='white' name='arrow' />
     </div>
     <div class='meta'>
-      <div
-        class='item '>
+      <div class='item ' @click='$router.push("/profile/balance")'>
         <div class='title'><span class='text-[#f19e38]'>{{ auth.profile?.balance ?? 0 }}</span>元</div>
         <div class='subtitle mt-2'>我的余额</div>
       </div>
