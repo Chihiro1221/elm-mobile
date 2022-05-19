@@ -46,3 +46,34 @@
 .van-uploader__input-wrapper {
   flex: 1 !important;
 }
+
+.animate_fade_left {
+  animation: fade-left 0.5s;
+}
+
+.animate_fade_out_left {
+  animation: fade-out-left 0.5s;
+}
+
+@keyframes fade-left {
+  0% {
+    opacity: 0;
+    transform: translateX(50%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fade-out-left {
+  0% {
+    opacity: 1;
+    transform: translateX(0%);
+  }
+  100% {
+    opacity: 0;
+    display: none;
+    transform: translateX(50%);
+  }
+}

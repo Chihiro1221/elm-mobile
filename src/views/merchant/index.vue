@@ -240,19 +240,6 @@ const handleShowFood = (food: Food) => {
       @apply absolute top-2 left-2;
     }
   }
-  .animate_fade_left {
-    animation: fade-left 0.5s;
-  }
 
-  @keyframes fade-left {
-    0% {
-      opacity: 0;
-      transform: translateX(100%);
-    }
-    100% {
-      opacity: 1;
-      transform: translateX(0);
-    }
-  }
 }
 </style>

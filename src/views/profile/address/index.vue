@@ -27,7 +27,8 @@ const handleRemoveAddress = (address: Address) => {
 
 <template>
   <div class='address-container'>
-    <Navbar title='编辑地址' :right='isEdit ? "完成":"编辑"' @right-click='isEdit = !isEdit' />
+    <Navbar title='编辑地址' :right='isEdit ? "完成":"编辑"' @right-click='isEdit = !isEdit'
+            @left-click='$router.push("/profile/info")' />
     <div class='address mt-2'>
       <div v-for='address of addresses' :key='address.id' class='item bg-white text-xs border-y px-4 py-2 relative'>
         <div class='content text-sm'>{{ address.address }}</div>
@@ -54,7 +55,7 @@ const handleRemoveAddress = (address: Address) => {
   z-index: 2001;
 
   .van-nav-bar {
-    position: absolute;
+    position: fixed;
   }
 }
 

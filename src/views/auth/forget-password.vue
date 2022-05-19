@@ -74,7 +74,7 @@ const confirmPasswordRule = (value: string) => {
           </template>
         </van-field>
         <div style='margin: 16px'>
-          <van-button block type='primary' color='#2ecc71' native-type='submit'>登录</van-button>
+          <van-button block type='primary' color='#2ecc71' native-type='submit'>确认修改</van-button>
         </div>
       </van-form>
     </div>
@@ -86,6 +86,10 @@ const confirmPasswordRule = (value: string) => {
   @apply pt-[46px] bg-[#f5f5f5] h-screen w-full;
   .van-field {
     border: none !important;
+  }
+
+  .van-nav-bar {
+    position: absolute;
   }
 }
 </style>

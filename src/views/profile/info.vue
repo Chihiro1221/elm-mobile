@@ -20,12 +20,18 @@ const afterUpload = (file: UploadResult) => {
     auth.initUserProfile()
   }
 }
+const handleBind = () => {
+  Dialog.confirm({ title: '警告', message: '请在App中绑定', showCancelButton: false })
+}
 
+const leftClick = () => {
+  router.push('/profile')
+}
 </script>
 
 <template>
   <div class='info-container'>
-    <Navbar title='账户信息' />
+    <Navbar title='账户信息' :onLeftClick='leftClick' />
     <van-uploader class='w-full' accept='image/*' :after-read='afterUpload' :before-read='beforeUpload'>
       <van-cell class='border-b w-full'>
         <template #title>
@@ -68,7 +74,7 @@ const afterUpload = (file: UploadResult) => {
     </van-cell>
     <div class='binding mt-2'>
       <div class='p-2 text-xs text-gray-500'>账号绑定</div>
-      <van-cell class='border'>
+      <van-cell class='border' @click='handleBind'>
         <template #title>
           <div class='flex items-center h-full'>
             <van-icon name='graphic' class='mr-1 text-[#5d8cdb]' size='20' />
@@ -84,7 +90,7 @@ const afterUpload = (file: UploadResult) => {
     </div>
     <div class='binding mt-2'>
       <div class='p-2 text-xs text-gray-500'>安全设置</div>
-      <van-cell class='border'>
+      <van-cell class='border' @click='$router.push("/forget-password")'>
         <template #title>
           <div class='flex items-center h-full'>
             <span>登录密码</span>

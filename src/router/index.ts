@@ -77,7 +77,7 @@ const router = createRouter({
       path: '/profile/info',
       name: 'profile.info',
       meta: {
-        animation: { enter: 'animate__fadeInRight', leave: 'animate__fadeOutRight' },
+        animation: { enter: 'animate_fade_left', leave: 'animate_fade_out_left' },
         auth: true
       },
       component: () => import('@/views/profile/info.vue')
@@ -86,7 +86,7 @@ const router = createRouter({
       path: '/profile/info/change-username',
       name: 'profile.info.change-username',
       meta: {
-        animation: { enter: 'animate__fadeInRight', leave: 'animate__fadeOutRight' },
+        animation: { enter: 'animate_fade_left', leave: 'animate_fade_out_left' },
         auth: true
       },
       component: () => import('@/views/profile/change-username.vue')
@@ -95,7 +95,7 @@ const router = createRouter({
       path: '/profile/info/address',
       name: 'profile.info.address',
       meta: {
-        animation: { enter: 'animate__fadeInRight', leave: 'animate__fadeOutRight' },
+        animation: { enter: 'animate_fade_left', leave: 'animate_fade_out_left' },
         auth: true
       },
       component: () => import('@/views/profile/address/index.vue')
@@ -104,12 +104,20 @@ const router = createRouter({
       path: '/profile/info/address/add',
       name: 'profile.info.address.add',
       meta: {
-        animation: { enter: 'animate__fadeInRight', leave: 'animate__fadeOutRight' },
+        animation: { enter: 'animate_fade_left', leave: 'animate_fade_out_left' },
         auth: true
       },
       component: () => import('@/views/profile/address/add.vue')
+    },
+    {
+      path: '/profile/info/address/search',
+      name: 'profile.info.address.search',
+      meta: {
+        animation: { enter: 'animate_fade_left', leave: 'animate_fade_out_left' },
+        auth: true
+      },
+      component: () => import('@/views/profile/address/search.vue')
     }
-
   ]
 })
 

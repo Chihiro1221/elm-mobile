@@ -1,21 +1,34 @@
 <script setup lang='ts'>
-const props = withDefaults(defineProps<{ title?: string, right?: string }>(), {
+import router from '@/router'
+
+interface IProps {
+  title?: string,
+  right?: string,
+  onLeftClick?: Function,
+  onRightClick?: Function,
+}
+
+const props = withDefaults(defineProps<IProps>(), {
   title: '默认标题'
 })
+const handleLeftClick = () => {
+  props.onLeftClick ? props.onLeftClick() : router.back()
+
+}
 </script>
 
 <template>
-  <van-nav-bar fixed @click-left='$router.back()'>
+  <van-nav-bar fixed>
     <template #title>
       <div>{{ title }}</div>
     </template>
     <template #left>
       <div>
-        <van-icon name='arrow-left' size='20' />
+        <van-icon @click='handleLeftClick' name='arrow-left' size='20' />
       </div>
     </template>
     <template #right>
-      <div @click='$emit("right-click")' class='text-white'>{{ right }}</div>
+      <div @click='onRightClick' class='text-white'>{{ right }}</div>
     </template>
   </van-nav-bar>
 </template>

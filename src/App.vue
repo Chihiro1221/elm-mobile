@@ -10,7 +10,9 @@
         :enter-active-class="route.meta.animation?.enter ?? 'animate__fadeIn'"
         :leave-active-class="route.meta.animation?.leave ?? 'animate__fadeOut'"
       >
-        <component :is='Component' />
+        <keep-alive :include='["AddAddress"]'>
+          <component :is='Component' />
+        </keep-alive>
       </transition>
     </router-view>
   </suspense>

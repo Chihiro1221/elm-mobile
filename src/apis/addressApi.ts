@@ -62,9 +62,10 @@ export const removeAddress = (userId: number, addressId: number) => {
  * @param id 用户id
  * @param payload
  */
-export const addAddress = (id: string, payload: IAddressForm) => {
+export const addAddress = (id: number, payload: IAddressForm) => {
   return http.request({
     url: `v1/users/${id}/addresses`,
+    method: 'POST',
     data: {
       ...payload,
       geohash: location.location?.geohash,
@@ -72,5 +73,15 @@ export const addAddress = (id: string, payload: IAddressForm) => {
       tag: '公司',
       tag_type: 4
     }
+  })
+}
+
+/**
+ * 搜索地址
+ * @param keyword
+ */
+export const searchAddress = (keyword: string) => {
+  return http.request({
+    url: `v1/pois?keyword=${keyword}&type=search`
   })
 }
