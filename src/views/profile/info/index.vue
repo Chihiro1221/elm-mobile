@@ -4,11 +4,11 @@ import authStore from '@/store/auth'
 import { Dialog } from 'vant'
 import router from '@/router'
 import { uploadAvatar, UploadResult } from '@/apis/uploadApi'
-import ChangeUsername from '@/views/profile/change-username.vue'
+import ChangeUsername from '@/views/profile/info/change-username.vue'
 import { inject } from 'vue'
 import { ProvideKeyEnum } from '@/enum/ProvideKeyEnum'
 import FadeIn from '@/components/common/fade-in.vue'
-import Address from '@/views/profile/address/index.vue'
+import Address from '@/views/profile/info/address/index.vue'
 import { IInject, handleBind } from '@/hooks/profile'
 
 const auth = authStore()

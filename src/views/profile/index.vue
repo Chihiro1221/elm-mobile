@@ -1,7 +1,7 @@
 <script setup lang='ts'>
 import authStore from '@/store/auth'
 import FadeIn from '@/components/common/fade-in.vue'
-import Info from '@/views/profile/info.vue'
+import Info from '@/views/profile/info/index.vue'
 import profileHook from '@/hooks/profile'
 
 const auth = authStore()

@@ -4,10 +4,10 @@ import { inject, ref } from 'vue'
 import { Address, getAddresses, removeAddress } from '@/apis/addressApi'
 import authStore from '@/store/auth'
 import { Dialog } from 'vant'
-import { IInject } from '@/views/home/profile.vue'
+import { IInject } from '@/views/profile/index.vue'
 import { ProvideKeyEnum } from '@/enum/ProvideKeyEnum'
-import AddAddress from '@/views/profile/address/add.vue'
-import SearchAddress from '@/views/profile/address/search.vue'
+import AddAddress from '@/views/profile/info/address/add.vue'
+import SearchAddress from '@/views/profile/info/address/search.vue'
 import FadeIn from '@/components/common/fade-in.vue'
 
 const auth = authStore()

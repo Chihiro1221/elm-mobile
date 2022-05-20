@@ -34,7 +34,7 @@ const router = createRouter({
           path: 'profile/:page1?/:page2?/:page3?',
           name: 'home.profile',
           meta: { tabbar: { name: '我的', icon: 'user-o', index: 4 } },
-          component: () => import('@/views/home/profile.vue')
+          component: () => import('@/views/profile/index.vue')
         }
       ]
     },
@@ -59,14 +59,14 @@ const router = createRouter({
       component: () => import('@/views/auth/forget-password.vue')
     },
     {
-      path: '/member',
+      path: '/member/:page?',
       name: 'member',
-      component: () => import('@/views/profile/member.vue')
+      component: () => import('@/views/profile/member/index.vue')
     },
     {
       path: '/service',
       name: 'service',
-      component: () => import('@/views/profile/service.vue')
+      component: () => import('@/views/profile/service/index.vue')
     },
     {
       path: '/download',
@@ -92,8 +92,12 @@ const router = createRouter({
       path: '/profile/integral/:page?',
       name: 'profile.integral',
       component: () => import('@/views/profile/integral/index.vue')
+    },
+    {
+      path: '/order/confirm',
+      name: 'order.confirm',
+      component: () => import('@/views/pay/index.vue')
     }
-
   ]
 })
 
