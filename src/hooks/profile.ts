@@ -1,6 +1,7 @@
 import { provide, Ref, ref, watchEffect } from 'vue'
 import { ProvideKeyEnum } from '@/enum/ProvideKeyEnum'
 import { useRoute } from 'vue-router'
+import { Dialog } from 'vant'
 
 export interface IInject {
   infoShow: Ref<boolean>
@@ -10,7 +11,11 @@ export interface IInject {
   searchAddressShow: Ref<boolean>
 }
 
-export default function() {
+export const handleBind = (message: string) => {
+  Dialog.confirm({ title: '警告', message, showCancelButton: false })
+}
+
+export default function () {
   const route = useRoute()
 
   const infoShow = ref(false)
@@ -30,13 +35,13 @@ export default function() {
     changeUserNameShow,
     addressShow,
     addAddressShow,
-    searchAddressShow
+    searchAddressShow,
   })
   return {
     infoShow,
     changeUserNameShow,
     addressShow,
     addAddressShow,
-    searchAddressShow
+    searchAddressShow,
   }
 }

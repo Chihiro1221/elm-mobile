@@ -84,15 +84,21 @@ const router = createRouter({
       component: () => import('@/views/profile/balance/index.vue')
     },
     {
-      path: '/profile/discount',
+      path: '/profile/discount/:page?',
       name: 'profile.discount',
       component: () => import('@/views/profile/discount/index.vue')
+    },
+    {
+      path: '/profile/integral/:page?',
+      name: 'profile.integral',
+      component: () => import('@/views/profile/integral/index.vue')
     }
+
   ]
 })
 
 export async function setupRouter(app: App) {
-  void await authStore().initUserProfile()
+  void (await authStore().initUserProfile())
   new Guard(router)
   app.use(router)
 }

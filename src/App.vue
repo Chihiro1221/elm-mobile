@@ -9,6 +9,7 @@
         class='animate__animated'
         :enter-active-class="route.meta.animation?.enter ?? 'animate__fadeIn'"
         :leave-active-class="route.meta.animation?.leave ?? 'animate__fadeOut'"
+        mode='in-out'
       >
         <keep-alive :include='["AddAddress"]'>
           <component :is='Component' />
@@ -24,6 +25,8 @@
 }
 
 .animate__fadeIn, .animate__fadeOut {
-  animation-duration: 200ms;
+  animation-duration: 500ms;
+  position: absolute;
+  width: 100%;
 }
 </style>

@@ -17,7 +17,7 @@
 }
 
 .van-tabs__nav {
-  z-index: 99999;
+  z-index: 2000;
 }
 
 .cell-title {
@@ -79,9 +79,19 @@
 }
 
 .van-hairline--bottom:after {
-  border: none
+  border: none;
 }
 
 .van-popup--center {
   z-index: 2101 !important;
+}
+
+.markdown {
+  h3 {
+    @apply my-3;
+  }
+
+  p {
+    @apply text-sm text-[#666];
+  }
 }

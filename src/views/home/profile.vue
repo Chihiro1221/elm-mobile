@@ -37,7 +37,7 @@ const navigate = () => {
         </div>
         <div class='subtitle mt-2'>我的优惠</div>
       </div>
-      <div class='item'>
+      <div class='item' @click='$router.push("/profile/integral")'>
         <div class='title'><span class='text-[#80c03c]'>{{ auth.profile?.brand_member_new ?? 0 }}</span>元
         </div>
         <div class='subtitle mt-2'>我的积分</div>
