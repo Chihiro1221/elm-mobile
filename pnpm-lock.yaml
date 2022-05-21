@@ -3,11 +3,13 @@ lockfileVersion: 5.4
 specifiers:
   '@better-scroll/core': ^2.4.2
   '@types/better-scroll': ^1.12.4
+  '@types/lodash': ^4.14.182
   '@types/node': ^17.0.33
   '@vitejs/plugin-vue': ^2.3.3
   autoprefixer: ^10.4.7
   axios: ^0.27.2
   better-scroll: ^2.4.2
+  lodash: ^4.17.21
   pinia: ^2.0.14
   postcss: ^8.4.13
   rm: ^0.1.8
@@ -33,9 +35,11 @@ dependencies:
 
 devDependencies:
   '@types/better-scroll': 1.12.4
+  '@types/lodash': 4.14.182
   '@types/node': 17.0.33
   '@vitejs/plugin-vue': 2.3.3_vite@2.9.9+vue@3.2.33
   autoprefixer: 10.4.7_postcss@8.4.13
+  lodash: 4.17.21
   postcss: 8.4.13
   sass: 1.51.0
   tailwindcss: 3.0.24
@@ -187,6 +191,10 @@ packages:
 
   /@types/better-scroll/1.12.4:
     resolution: {integrity: sha512-mSp1CULFPnfotPUuJC9RXG6PaVhqJt0bMbo9wXyUypteSM6o0O9pHZCqY4HQX2KqUXqwtxIvUja1q+rWf3CR7g==}
+    dev: true
+
+  /@types/lodash/4.14.182:
+    resolution: {integrity: sha512-/THyiqyQAP9AfARo4pF+aCGcyiQ94tX/Is2I7HofNRqoYLgN1PBoOWu2/zTA5zMxzP5EFutMtWtGAFRKUe961Q==}
     dev: true
 
   /@types/node/17.0.33:
@@ -1424,6 +1432,10 @@ packages:
   /lodash.set/4.3.2:
     resolution: {integrity: sha512-4hNPN5jlm/N/HLMCO43v8BXKq9Z7QdAGc/VGrRD61w8gN9g/6jF9A4L1pbUgBLCffi0w9VsXfTOij5x8iTyFvg==}
     dev: false
+
+  /lodash/4.17.21:
+    resolution: {integrity: sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==}
+    dev: true
 
   /log-symbols/4.1.0:
     resolution: {integrity: sha512-8XPvpAA8uyhfteu8pIvQxpJZ7SYYdpUivZpGy6sFsBuKRY/7rQGavedeB8aK+Zkyq6upMFVL/9AW6vOYzfRyLg==}

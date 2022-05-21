@@ -64,7 +64,7 @@ const router = createRouter({
       component: () => import('@/views/profile/member/index.vue')
     },
     {
-      path: '/service',
+      path: '/service/:page?',
       name: 'service',
       component: () => import('@/views/profile/service/index.vue')
     },

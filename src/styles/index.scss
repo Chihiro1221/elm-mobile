@@ -4,6 +4,11 @@
   font-family: Microsoft Yahei, sans-serif;
 }
 
+body {
+  max-width: 750px;
+  margin: 0 auto;
+}
+
 :root {
   --van-nav-bar-background-color: #4d8ee1;
   --van-nav-bar-text-color: white;

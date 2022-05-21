@@ -3,13 +3,11 @@ import authStore from '@/store/auth'
 import FadeIn from '@/components/common/fade-in.vue'
 import Info from '@/views/profile/info/index.vue'
 import profileHook from '@/hooks/profile'
+import { navigate } from '@/utils/navigate'
 
 const auth = authStore()
 const { infoShow } = profileHook()
 
-const navigate = () => {
-  location.href = 'https://activity-6.m.duiba.com.cn/'
-}
 </script>
 
 <template>
@@ -49,7 +47,7 @@ const navigate = () => {
           <van-icon name='arrow' size='15' color='#888' />
         </template>
       </van-cell>
-      <van-cell @click='navigate' title='积分商城'>
+      <van-cell @click='navigate("https://activity-6.m.duiba.com.cn/")' title='积分商城'>
         <template #icon>
           <van-icon class='mr-1' name='bag' size='20' color='#ec825d' />
         </template>
