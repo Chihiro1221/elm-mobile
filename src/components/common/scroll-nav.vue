@@ -1,4 +1,4 @@
-<script setup lang='ts'>
+<script setup lang="ts">
 import { Category } from '@/apis/merchantApi'
 import { computed, onMounted, onUnmounted, ref } from 'vue'
 import BetterScroll, { BScrollInstance } from '@better-scroll/core'
@@ -10,7 +10,7 @@ const props = defineProps<{
 const scrollTop = ref(0)
 const menuRef = ref()
 const contentRef = ref()
-const list = ref<HTMLDivElement[]>([])
+const list = ref<HTMLElement[]>([])
 const heightList = ref<number[]>([])
 const menuInstance = ref<BScrollInstance>()
 const contentInstance = ref<BScrollInstance>()
@@ -27,12 +27,12 @@ onMounted(() => {
   setTimeout(() => {
     menuInstance.value = new BetterScroll(menuRef.value, {
       click: true,
-      observeDOM: true
+      observeDOM: true,
     })
     calculateHeight()
     contentInstance.value = new BetterScroll(contentRef.value, {
       probeType: 3,
-      click: true
+      click: true,
     })
 
     //触发滑动实时监听
@@ -59,34 +59,34 @@ const currentIndex = computed(() => {
 </script>
 
 <template>
-  <div class='container'>
-    <nav ref='menuRef' class='nav' id='nav'>
+  <div class="container">
+    <nav ref="menuRef" class="nav" id="nav">
       <div>
         <div
-          :class='{ active: i === currentIndex }'
-          class='item'
-          v-for='(item, i) of navs'
-          :key='item.id'
-          @click='handleClick(i)'
+          :class="{ active: i === currentIndex }"
+          class="item"
+          v-for="(item, i) of navs"
+          :key="item.id"
+          @click="handleClick(i)"
         >
           {{ item.name }}
         </div>
       </div>
     </nav>
-    <div class='content' ref='contentRef'>
-      <div class='box'>
-        <div v-for='cate of source' :key='cate.id' :ref='item => list.push(item)'>
-          <slot :cate='cate'></slot>
+    <div class="content" ref="contentRef">
+      <div class="box">
+        <div v-for="cate of source" :key="cate.id" :ref="item => list.push((item as HTMLDivElement))">
+          <slot :cate="cate"></slot>
         </div>
       </div>
     </div>
   </div>
 </template>
 
-<style scoped lang='scss'>
+<style scoped lang="scss">
 .container {
   .nav {
-    @apply w-[90px] fixed left-0 bg-[#f5f5f5];
+    @apply w-[90px] fixed left-0 bg-[#f5f5f5] pb-[70px] box-border;
     height: calc(100vh - 44px - 138px);
 
     .item {

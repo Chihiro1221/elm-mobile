@@ -30,7 +30,7 @@ export interface IMerchant {
   longitude: number
   location: number[]
   phone: string
-  category: string
+  Category: string
   supports: Support[]
   status: number
   recent_order_num: number
@@ -135,7 +135,8 @@ interface Attribute {
   icon_name: string
 }
 
-interface Specfood {
+export interface Specfood {
+  specs_name: string
   name: string
   item_id: number
   sku_id: number
@@ -201,7 +202,7 @@ export const getMerchants = (query: Partial<MerchantQuery> = {}) => {
   query.longitude = location?.longitude
   return http.request<IMerchant[]>({
     url: 'shopping/restaurants',
-    params: query
+    params: query,
   })
 }
 
@@ -214,8 +215,8 @@ export const searchMerchant = (keyword: string) => {
     url: 'v4/restaurants',
     params: {
       keyword,
-      geohash: location?.geohash
-    }
+      geohash: location?.geohash,
+    },
   })
 }
 
@@ -225,7 +226,7 @@ export const searchMerchant = (keyword: string) => {
  */
 export const getMerchant = (id: string) => {
   return http.request<IMerchant>({
-    url: `shopping/restaurant/${id}`
+    url: `shopping/restaurant/${id}`,
   })
 }
 
@@ -235,7 +236,7 @@ export const getMerchant = (id: string) => {
  */
 export const getGoodList = (id: string) => {
   return http.request<Category[]>({
-    url: `shopping/v2/menu?restaurant_id=${id}`
+    url: `shopping/v2/menu?restaurant_id=${id}`,
   })
 }
 
@@ -245,7 +246,7 @@ export const getGoodList = (id: string) => {
  */
 export const getComments = (id: string) => {
   return http.request<Comment[]>({
-    url: `ugc/v2/restaurants/${id}/ratings`
+    url: `ugc/v2/restaurants/${id}/ratings`,
   })
 }
 
@@ -255,7 +256,7 @@ export const getComments = (id: string) => {
  */
 export const getMerchantRating = (id: string) => {
   return http.request<MerchantRating>({
-    url: `ugc/v2/restaurants/${id}/ratings/scores`
+    url: `ugc/v2/restaurants/${id}/ratings/scores`,
   })
 }
 
@@ -265,6 +266,6 @@ export const getMerchantRating = (id: string) => {
  */
 export const getMerchantCommentCate = (id: string) => {
   return http.request<MerchantCommentCate[]>({
-    url: `ugc/v2/restaurants/${id}/ratings/tags`
+    url: `ugc/v2/restaurants/${id}/ratings/tags`,
   })
 }

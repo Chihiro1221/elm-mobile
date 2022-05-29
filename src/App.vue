@@ -20,7 +20,7 @@
 </template>
 
 <style lang='scss' scoped>
-.animate__fadeInRight, animate__fadeOutRight {
+.animate__fadeInRight, .animate__fadeOutRight {
   animation-duration: 300ms;
 }
 
